@@ -4,3 +4,6 @@
 [submodule "vim/bundle/closetag"]
 	path = vim/bundle/closetag
 	url = http://github.com/docunext/closetag.vim.git
+[submodule "vim/bundle/supertab"]
+	path = vim/bundle/supertab
+	url = http://github.com/vim-scripts/SuperTab.git
