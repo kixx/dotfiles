@@ -63,6 +63,8 @@ set noerrorbells    " don't beep
 set showcmd         " show partial command and visual selection info
 "set cursorline      " highlight current line
 
+
+
 "
 " COLORS
 "
@@ -105,9 +107,8 @@ cmap w!! w !sudo tee % >/dev/null
 nnoremap <leader><leader> :e!#<cr>
 
 "
-" FILE TYPE
+" FILE TYPES
 "
-
 filetype plugin indent on
 
 if has("autocmd")
@@ -141,7 +142,7 @@ if has("autocmd")
         au!
 
         autocmd filetype css,less setlocal foldmethod=marker foldmarker={,}
-    augroup end 
+    augroup end
 
     augroup javascript_files
         au!
