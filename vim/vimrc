@@ -164,7 +164,6 @@ if has("autocmd")
 endif
 
 " extra vi-compatible options
-set cpoptions+=$    " when changing a line put a '$' at the end
 set formatoptions-=o " don't start new lines with comment leader 
                      " when pressing 'o'
 au filetype vim set formatoptions-=o " set again for vim files"""
