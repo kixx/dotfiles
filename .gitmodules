@@ -10,3 +10,6 @@
 [submodule "vim/bundle/buffergator"]
 	path = vim/bundle/buffergator
 	url = http://github.com/jeetsukumaran/vim-buffergator.git
+[submodule "vim/bundle/tagbar"]
+	path = vim/bundle/tagbar
+	url = git://github.com/majutsushi/tagbar.git
