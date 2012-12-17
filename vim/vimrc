@@ -112,16 +112,6 @@ nnoremap <leader><leader> :e!#<cr>
 filetype plugin indent on
 
 if has("autocmd")
-    augroup invisible_chars
-        au!
-
-        " Show invisible chars for all these files
-        autocmd filetype vim setlocal list
-        autocmd filetype python,rst setlocal list
-        autocmd filetype ruby setlocal list
-        autocmd filetype javascript,css list
-    augroup end
-
     augroup vim_files
         au!
 
