@@ -71,8 +71,8 @@ set showcmd         " show partial command and visual selection info
 
 if &t_Co > 2 || has("gui_running")
     syntax on
-    set background=dark
     colorscheme default
+    set background=dark
 "    colorscheme solarized
 endif
 
