@@ -29,7 +29,7 @@ set scrolloff=4     " keep 4 lines above/below current line on screen
 set hlsearch        " highlight searches
 set incsearch       " show searches as you type
 set gdefault        " search/replace globally on line by default
-set listchars=tab:▸\ ,trail:·,extends:#,nbsp:·
+set listchars=tab:>-,trail:~,extends:>,precedes:<
                     " markers for invisible chars
 set nolist          " don't show invisible chars by default 
                     " but we'll override it later for some file types
@@ -71,7 +71,7 @@ set showcmd         " show partial command and visual selection info
 
 if &t_Co > 2 || has("gui_running")
     syntax on
-    colorscheme kixx
+    colorscheme default
     set background=dark
 "    colorscheme solarized
 endif
