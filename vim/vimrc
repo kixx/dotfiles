@@ -125,7 +125,7 @@ if has("autocmd")
 
         let g:closetag_default_xml=1
         autocmd FileType html,tt2,php let b:closetag_html_style=1
-        autocmd FileType html,xhtml,xml,tt2,php source ~/.vim/bundle/closetag/plugin/closetag.vim
+        autocmd FileType html,xhtml,xml,php source ~/.vim/bundle/closetag/plugin/closetag.vim
     augroup end
 
     augroup css_files
