@@ -1,3 +1,7 @@
+" enable UTF-8 characters
+scriptencoding utf-8
+set encoding=utf-8
+
 " disable backward vi compatibility
 set nocompatible
 
