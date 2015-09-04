@@ -120,8 +120,8 @@ if has("autocmd")
         au!
 
         " Bind <F1> to show help for the word under the cursor
-        autocmd filetype vim noremap <buffer> <F1> <Esc>:help <C-r><C-w><CR>
-        autocmd filetype vim noremap! <buffer> <F1> <Esc>:help <C-r><C-w><CR>
+        autocmd FileType vim noremap <buffer> <F1> <Esc>:help <C-r><C-w><CR>
+        autocmd FileType vim noremap! <buffer> <F1> <Esc>:help <C-r><C-w><CR>
     augroup end
 
     augroup html_files
@@ -135,23 +135,23 @@ if has("autocmd")
     augroup css_files
         au!
 
-        autocmd filetype css,less setlocal foldmethod=marker foldmarker={,}
+        autocmd FileType css,less setlocal foldmethod=marker foldmarker={,}
     augroup end
 
     augroup javascript_files
         au!
 
-        autocmd filetype javascript setlocal expandtab
-        autocmd filetype javascript setlocal listchars=trail:·,extends:#,nbsp:·
-        autocmd filetype javascript setlocal foldmethod=marker foldmarker={,}
+        autocmd FileType javascript setlocal expandtab
+        autocmd FileType javascript setlocal listchars=trail:·,extends:#,nbsp:·
+        autocmd FileType javascript setlocal foldmethod=marker foldmarker={,}
     augroup end
 
     augroup perl_files
         au!
 
-        autocmd filetype perl setlocal makeprg=perl\ -c\ -MViQuickFix\ %
-        autocmd filetype perl setlocal errorformat+=%m\ at\ %f\ line\ %l\.
-        autocmd filetype perl setlocal errorformat+=%m\ at\ %f\ line\ %l
+        autocmd FileType perl setlocal makeprg=perl\ -c\ -MViQuickFix\ %
+        autocmd FileType perl setlocal errorformat+=%m\ at\ %f\ line\ %l\.
+        autocmd FileType perl setlocal errorformat+=%m\ at\ %f\ line\ %l
     " restore cursor postion when reopening files
     autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
@@ -160,7 +160,7 @@ endif
 " extra vi-compatible options
 set formatoptions-=o " don't start new lines with comment leader 
                      " when pressing 'o'
-au filetype vim set formatoptions-=o " set again for vim files"""
+au FileType vim set formatoptions-=o " set again for vim files"""
 
 " status
 set laststatus=2
