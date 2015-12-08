@@ -6,7 +6,7 @@ settitle() {
 
 ssh() {
     case "$TERM" in
-        screen*)
+        *256color*)
             settitle "$*"
             command ssh "$@"
             settitle "`hostname -s`"
@@ -31,7 +31,8 @@ tmux () {
 
   # No server yet? Let them know how to start one
   if ! command tmux info &> /dev/null; then
-    echo "No tmux server. You need to start one first.\nTry creating a new session: 'tmux new -s <session-name>'"
+    echo No tmux server. You need to start one first.
+    echo Try creating a new session: 'tmux new -s <session-name>'
     return 0
   fi
 
@@ -48,5 +49,3 @@ alias tmls='tm ls'
 alias tmnew='tm new -s '
 alias tmatt='tm attach -t '
 alias tmdet='tm detach'
-
-
