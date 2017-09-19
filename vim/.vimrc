@@ -226,7 +226,7 @@ au FileType vim set formatoptions-=o    " set again for vim files
 
 " status
 set laststatus=2
-set statusline=%f%m%r%h%w\ [%{&ff}/%Y]\ [char=\%03.3b/0x\%02.2B]\ [%04l,%04v\ %p%%]\ [%L\ lines]
+set statusline=%f%m%r%h%w\ [%{&ff}/%Y]\ %{fugitive#statusline()}\ [char=\%03.3b/0x\%02.2B]\ [%04l,%04v\ %p%%]\ [%L\ lines]
 
 "
 " PLUGIN CONFIGS
