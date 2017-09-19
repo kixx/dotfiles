@@ -1,85 +1,154 @@
-" enable UTF-8 characters
-scriptencoding utf-8
-set encoding=utf-8
+"
+" Colors
+"
 
-" disable backward vi compatibility
-set nocompatible
+colorscheme badwolf     " awesome colorscheme
+syntax enable           " enable syntax processing
 
-" pathogen (includes plugins in bundle/)
-call pathogen#infect()
+"
+" Spaces & Tabs
+"
 
-" replace mapleader "\" with ","
-let mapleader=","
+set tabstop=4           " number of visual spaces per TAB
+set softtabstop=4       " number of spaces in tab when editing
+set expandtab           " tabs are spaces
 
-" common stuff
-set showmode        " show the mode we're in
-set nowrap          " don't wrap lines
-set tabstop=4       " tabs are 4 spaces
-set expandtab       " expand tabs to spaces
-set softtabstop=4   " remove spaces as they were tabs
-set backspace=indent,eol,start
-                    " allow backspacing over everything
-set autoindent      " always autoindent
-set copyindent      " copy previous indent level on autindent
-set shiftwidth=4    " indent with 4 spaces
-set shiftround      " indent with multiple of shiftwidth with < and >
-set showmatch       " show matching parens
-set ignorecase      " ignore case on search
-set smartcase       " case ignore with pattern is all lowercase,
-                    "  case sensitive otherwise
-set smarttab        " insert tabs at beginning of line according
-                    " to shift width not tab stop
-set scrolloff=4     " keep 4 lines above/below current line on screen
-set hlsearch        " highlight searches
-set incsearch       " show searches as you type
-set gdefault        " search/replace globally on line by default
-set listchars=tab:▸\ ,trail:·,extends:#,nbsp:·
-                    " markers for invisible chars
-set nolist          " don't show invisible chars by default 
-                    " but we'll override it later for some file types
-set pastetoggle=<F2> " toggle autoindent on paste on/off
-set mouse=a         " enable mouse if term supports it
+"
+" UI Config
+"
+
+set number              " show line numbers
+set showcmd             " show command in bottom bar
+set cursorline          " highlight current line
+filetype indent on      " load filetype-specific indent files
+
+set wildmenu            " visual autocomplete for command menu
+set wildmode=list:full  " show list and complete first full match
+set wildignore=*.sw?,*.bak,*~,
+                        " ignore temp file for autocomplete
+set lazyredraw          " redraw only when needed
+set showmatch           " highlight matching {[()]}
+
+"
+" Searching
+"
+
+set incsearch           " search as characters are entered
+set hlsearch            " highlight matches
+
+set ignorecase          " ignore case on search
+set smartcase           " case ignore with pattern is all lowercase, case sensitive otherwise
+
+" tun off search highlight
+nnorremap <leader><space> :nohlsearch<CR>
+
+"
+" Folding
+"
+
+set foldenable          " enable folding
+set foldlevelstart=10   " open most folds by default
+set foldnestmax=10      " 10 nested fold max
+" space open/closes fold
+nnoremap <space> za
+set foldmethod=indent   " fold based on indent level
+
+"
+" Movement
+"
+
+" move vertically by visual line
+nnoremap j gj
+nnoremap k gk
+
+" move to beginning/end of line
+nnoremap B ^
+nnoremap E $
+
+" $/^ doesn't do anything
+nnoremap $ <nop>
+nnoremap ^ <nop>
+
+" highlight last inserted text
+nnoremap gV `[v`]
+
+"
+" Leader shortcuts
+"
+
+let mapleader=","       " leader is comma
+" jk is escape
+inoremap jk <esc>
+" edit vimrc/bashrc and load vimrc bindings
+nnoremap <leader>ev :vsp $MYVIMRC<CR>
+nnoremap <leader>eb :vsp ~/.bashrc<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
+
+" save session
+nnoremap <leader>s :mksession<CR>
+
+" open ag.vim
+nnoremap <leader>a :Ag
+
+" CtrlP settings
+let g:ctrlp_match_window = 'bottom:order:ttb'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -h ""'
+
+"
+" Launch Config
+"
+
+call pathogen#infect()                      " use pathogen
+call pathogen#runtime_append_all_bundles()  " use pathogen
+
+"
+" Tmux
+"
+
+" allows cursor change in tmux mode
+if exists('$TMUX')
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+
+"
+" Other configs
+"
+
+set showmode                    " show the mode we're in
+set nowrap                      " don't wrap lines
+set backspace=indent,eol,start  " allow backspacing over everything
+set autoindent                  " always autoindent
+set copyindent                  " copy previous indent level on autindent
+set shiftwidth=4                " indent with 4 spaces
+set shiftround                  " indent with multiple of shiftwidth with < and >
+set smarttab                    " insert tabs at beginning of line according to shift width not tab stop
+set scrolloff=4                 " keep 4 lines above/below current line on screen
+set gdefault                    " search/replace globally on line by default
+set pastetoggle=<F2>            " toggle autoindent on paste on/off
+set mouse=a                     " enable mouse if term supports it
 
 " layout
 set termencoding=utf-8
 set encoding=utf-8
-set lazyredraw      " don't update display when executing macros
-set laststatus=2    " always display statusbar
 
 " behaviour
 set hidden          " hide buffers
 set history=1000    " remember more commands and search history
 set undolevels=1000 " more undos
-if v:version >= 730
-    set undofile    " persisten undos
-    set undodir=~/.vim/undo,~/tmp,/tmp
-endif
+set undofile    " persisten undos
+set undodir=~/.vim/undo,~/tmp,/tmp
 set nobackup        " don't keep backupfiles
 set noswapfile      " don't keep swapfiles
 
-set wildmenu        " autocomplete"
-set wildmode=list:full " show list and complete first full match"
-set wildignore=*.sw?,*.bak,*~,
-                    " ignore temp file for autocomplete
 set title           " change term title
 set visualbell      " don't beep
 set noerrorbells    " don't beep
-set showcmd         " show partial command and visual selection info
-"set cursorline      " highlight current line
-
-
-
-"
-" COLORS
-"
-
-if &t_Co > 2 || has("gui_running")
-    syntax on
-    colorscheme kixx
-    set background=dark
-"    colorscheme solarized
-endif
-
 
 "
 " KEYMAPS
@@ -98,12 +167,6 @@ nmap <leader>P "+P
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
-" clear search buffer
-nmap <silent> <leader>/ :nohlsearch<CR>
-
-" quickly get out of insert mode with jj
-inoremap jj <Esc>
-
 " sudo to write
 cmap w!! w !sudo tee % >/dev/null
 
@@ -111,7 +174,7 @@ cmap w!! w !sudo tee % >/dev/null
 nnoremap <leader><leader> :e!#<cr>
 
 "
-" FILE TYPES
+" Autogroups
 "
 filetype plugin indent on
 
@@ -158,9 +221,8 @@ if has("autocmd")
 endif
 
 " extra vi-compatible options
-set formatoptions-=o " don't start new lines with comment leader 
-                     " when pressing 'o'
-au FileType vim set formatoptions-=o " set again for vim files"""
+set formatoptions-=o                    " don't start new lines with comment leader when pressing 'o'
+au FileType vim set formatoptions-=o    " set again for vim files
 
 " status
 set laststatus=2
@@ -169,17 +231,6 @@ set statusline=%f%m%r%h%w\ [%{&ff}/%Y]\ [char=\%03.3b/0x\%02.2B]\ [%04l,%04v\ %p
 "
 " PLUGIN CONFIGS
 "
-
-" supertab
-let g:SuperTabLongestEnhanced=1
-
-" tagbar
-let g:tagbar_usearrows = 1
-nnoremap <leader>l :TagbarToggle<CR>
-
-" buffergator
-let g:buffergator_viewport_split_policy = "R"
-let g:buffergator_display_regime="bufname"
 
 " fugitive
 nnoremap <leader>g :Gstatus<CR>
