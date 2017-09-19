@@ -40,7 +40,7 @@ set ignorecase          " ignore case on search
 set smartcase           " case ignore with pattern is all lowercase, case sensitive otherwise
 
 " tun off search highlight
-nnorremap <leader><space> :nohlsearch<CR>
+nnoremap <leader><space> :nohlsearch<CR>
 
 "
 " Folding
