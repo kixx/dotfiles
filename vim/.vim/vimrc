@@ -1,11 +1,4 @@
 "
-" Colors
-"
-
-colorscheme badwolf     " awesome colorscheme
-syntax enable           " enable syntax processing
-
-"
 " Spaces & Tabs
 "
 
@@ -26,7 +19,6 @@ set wildmenu            " visual autocomplete for command menu
 set wildmode=list:full  " show list and complete first full match
 set wildignore=*.sw?,*.bak,*~,
                         " ignore temp file for autocomplete
-set lazyredraw          " redraw only when needed
 set showmatch           " highlight matching {[()]}
 
 "
@@ -86,9 +78,6 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " save session
 nnoremap <leader>s :mksession<CR>
-
-" open ag.vim
-nnoremap <leader>a :Ag
 
 "
 " Tmux
@@ -207,11 +196,19 @@ if has("autocmd")
 
 endif
 
-" extra vi-compatible options
-set formatoptions-=o                    " don't start new lines with comment leader when pressing 'o'
-au FileType vim set formatoptions-=o    " set again for vim files
+"
+" Plug
+" 
+call plug#begin('~/.vim/plugged')
 
-" status
-set laststatus=2
-set statusline=%f%m%r%h%w\ [%{&ff}/%Y]\ [char=\%03.3b/0x\%02.2B]\ [%04l,%04v\ %p%%]\ [%L\ lines]
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'bling/vim-bufferline'
 
+" Initialize plugin system
+call plug#end()
+
+colorscheme badwolf
+
+let g:airline_powerline_fonts = 1
+let g:airline_theme='badwolf'
