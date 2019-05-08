@@ -90,19 +90,6 @@ nnoremap <leader>s :mksession<CR>
 " open ag.vim
 nnoremap <leader>a :Ag
 
-" CtrlP settings
-let g:ctrlp_match_window = 'bottom:order:ttb'
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -h ""'
-
-"
-" Launch Config
-"
-
-call pathogen#infect()                      " use pathogen
-call pathogen#runtime_append_all_bundles()  " use pathogen
-
 "
 " Tmux
 "
@@ -226,11 +213,5 @@ au FileType vim set formatoptions-=o    " set again for vim files
 
 " status
 set laststatus=2
-set statusline=%f%m%r%h%w\ [%{&ff}/%Y]\ %{fugitive#statusline()}\ [char=\%03.3b/0x\%02.2B]\ [%04l,%04v\ %p%%]\ [%L\ lines]
+set statusline=%f%m%r%h%w\ [%{&ff}/%Y]\ [char=\%03.3b/0x\%02.2B]\ [%04l,%04v\ %p%%]\ [%L\ lines]
 
-"
-" PLUGIN CONFIGS
-"
-
-" fugitive
-nnoremap <leader>g :Gstatus<CR>
