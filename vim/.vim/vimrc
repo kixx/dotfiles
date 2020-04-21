@@ -197,7 +197,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-bufferline'
 Plug 'ekalinin/Dockerfile.vim'
-Plug 'vim-perl/vim-perl'
 
 Plug 'alvan/vim-closetag'
 
