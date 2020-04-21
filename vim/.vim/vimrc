@@ -163,15 +163,7 @@ if has("autocmd")
         autocmd FileType vim noremap! <buffer> <F1> <Esc>:help <C-r><C-w><CR>
     augroup end
 
-    augroup html_files
-        au!
-
-        let g:closetag_default_xml=1
-        autocmd FileType html,tt2,php let b:closetag_html_style=1
-        autocmd FileType html,xhtml,xml,php source ~/.vim/bundle/closetag/plugin/closetag.vim
-    augroup end
-
-    augroup css_files
+   augroup css_files
         au!
 
         autocmd FileType css,less setlocal foldmethod=marker foldmarker={,}
@@ -207,6 +199,8 @@ Plug 'bling/vim-bufferline'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'vim-perl/vim-perl'
 
+Plug 'alvan/vim-closetag'
+
 " Initialize plugin system
 call plug#end()
 
@@ -214,3 +208,8 @@ colorscheme badwolf
 
 let g:airline_powerline_fonts = 1
 let g:airline_theme='badwolf'
+
+" filetypes like xml, html, xhtml, ...
+" These are the file types where this plugin is enabled.
+"
+let g:closetag_filetypes = 'html,xhtml,phtml'
