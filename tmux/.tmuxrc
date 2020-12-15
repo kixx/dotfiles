@@ -44,6 +44,26 @@ tmux () {
   fi
 }
 
+export NCURSES_NO_UTF8_ACS=1
+tmuxmenu() {
+  INPUT=/tmp/tmux_in.$$
+  OUTPUT=/tmp/tmux_out.$$
+  #trap "rm $OUTPUT; rm $INPUT; exit" SIGHUP SIGINT SIGTERM
+
+  command tmux ls | nl | sed -r 's/^\s+([0-9]+)\s+([a-zA-Z0-9_-]+).*$/\1 \2/' > "${INPUT}"
+ 
+  SESSION_LIST="$(cat $INPUT | tr '\n' ' ')"
+  COUNT="$(wc -l $INPUT | sed -r 's/^([0-9]+) .+$/\1/')"
+
+  command dialog --menu 'tmux session' 0 0 $COUNT $SESSION_LIST 2> "${OUTPUT}"
+
+  SESSION_ID="$(cat $OUTPUT)"
+  SESSION="$(grep -E "^$SESSION_ID " $INPUT | sed -r 's/^[0-9]+ (.+)$/\1/')"
+
+  command tmux attach -t $SESSION
+}
+
+alias tmm='tmuxmenu'
 alias tm='tmux'
 alias tmls='tm ls'
 alias tmnew='tm new -s '
