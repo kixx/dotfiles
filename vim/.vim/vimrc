@@ -24,7 +24,7 @@ set wildignore=*.sw?,*.bak,*~,
 set showmatch           " highlight matching {[()]}
 set laststatus=2		" always show status line
 set ruler				" show cursor position
-set display=truncate	" show @@@ in front of truncated lines
+set display=lastline	" show @@@ when truncating lines
 
 "
 " Searching
