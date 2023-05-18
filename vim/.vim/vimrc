@@ -5,6 +5,8 @@
 set tabstop=4           " number of visual spaces per TAB
 set softtabstop=4       " number of spaces in tab when editing
 set expandtab           " tabs are spaces
+set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+						" white space characters and offscreen indicators
 
 "
 " UI Config
@@ -20,6 +22,9 @@ set wildmode=list:full  " show list and complete first full match
 set wildignore=*.sw?,*.bak,*~,
                         " ignore temp file for autocomplete
 set showmatch           " highlight matching {[()]}
+set laststatus=2		" always show status line
+set ruler				" show cursor position
+set display=truncate	" show @@@ in front of truncated lines
 
 "
 " Searching
@@ -105,9 +110,13 @@ set shiftwidth=4                " indent with 4 spaces
 set shiftround                  " indent with multiple of shiftwidth with < and >
 set smarttab                    " insert tabs at beginning of line according to shift width not tab stop
 set scrolloff=4                 " keep 4 lines above/below current line on screen
+set sidescroll=1				" scroll at least 1 columns horizontally (default scrolls half a scrren width)
+set sidescrolloff=2             " keep at least 2 columns on screen when scrolling horizontally
 set gdefault                    " search/replace globally on line by default
 set pastetoggle=<F2>            " toggle autoindent on paste on/off
 set mouse=a                     " enable mouse if term supports it
+set formatoptions+=j			" delete comment character when joining commented lines
+set autoread					" automatically reload modified files from disk if not modified in editor already
 
 " layout
 set termencoding=utf-8
