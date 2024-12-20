@@ -13,6 +13,7 @@ set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 "
 
 set number              " show line numbers
+set relativenumber      " show relative line numbers
 set showcmd             " show command in bottom bar
 set cursorline          " highlight current line
 filetype indent on      " load filetype-specific indent files
@@ -211,6 +212,7 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'airblade/vim-gitgutter', { 'branch': 'main' }
 Plug 'tpope/vim-fugitive'
 Plug 'alvan/vim-closetag'
+Plug 'nvie/vim-flake8'
 
 " Initialize plugin system
 call plug#end()
